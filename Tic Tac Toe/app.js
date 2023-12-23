@@ -7,6 +7,10 @@ let msg = document.querySelector("#msg")
 //playerX, playerO
 let turnO = true;
 
+//To track draw
+let count = 0;
+
+
 const winPatterns = [
   [0, 1, 2],
   [0, 3, 6],
@@ -19,6 +23,7 @@ const winPatterns = [
 ];
 
 const resetGame = () => {
+    count = 0;
     turnO = true;
     enableBoxes();
     msgContainer.classList.add("hide");
@@ -39,10 +44,20 @@ boxes.forEach((box) => {
             turnO = true;
         }
         box.disabled = true;
+        count++;
 
-        checkWinner();
+        let isWinner = checkWinner();
+
+        if(count === 9 && !isWinner)
+            gameDraw();
     })
 });
+
+const gameDraw = () => {
+    msg.innerText = `Game was a Draw`;
+    msgContainer.classList.remove("hide");
+    disableBoxes();
+}
 
 const disableBoxes = () => {
     for(let box of boxes)
