@@ -4,10 +4,8 @@ const inp = document.querySelector("input");
 
 
 btn.addEventListener("click", () => {
-    console.log(inp.value);
     let task = document.createElement("li");
-    let taskItem = document.createTextNode(inp.value);
-    task.appendChild(taskItem);
+    task.innerText = inp.value;
     ul.appendChild(task);
     inp.value = "";
 });
