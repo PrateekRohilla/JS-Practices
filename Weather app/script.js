@@ -6,12 +6,27 @@ const description = document.querySelector(".description");
 const humidity = document.getElementById("humidity");
 const windSpeed = document.getElementById("wind-speed");
 
+const invalidLocation = document.querySelector(".invalid-location");
+
+const weatherBody = document.querySelector(".weather-body");
+
 async function checkWeather(city){
     const apiKey = config.weatherAPIKey;
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
     const weatherData = await fetch(`${URL}`).then(response => response.json());
     
+    //check for invalid locations
+    if(weatherData.cod === `404`){
+        invalidLocation.style.display = "flex";
+        weatherBody.style.display = "none";
+        return;
+    }
+
+    //show images/data according to input
+    invalidLocation.style.display = "none";
+    weatherBody.style.display = "flex";
+
     //converting temperature to degree from kelvin
     temperature.innerHTML = `${Math.round(weatherData.main.temp - 273.15)}°C`;
     
@@ -21,6 +36,7 @@ async function checkWeather(city){
 
     windSpeed.innerHTML = `${weatherData.wind.speed}Km/H`;
 
+    //shows image as per weather
     switch(weatherData.weather[0].main){
         case 'Clouds':
             weatherImg.src = "/Weather app/assets/cloud.png";
@@ -40,7 +56,6 @@ async function checkWeather(city){
         
     }
 
-    console.log(weatherData);
 }
 
 searchBtn.addEventListener("click", () => {

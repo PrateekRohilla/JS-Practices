@@ -60,7 +60,7 @@ body{
 }
 
 .weather-body{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -128,4 +128,21 @@ body{
 .text span{
     font-size: 20px;
     font-weight: 600;
+}
+
+.invalid-location{
+    margin-top: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.invalid-location h2{
+    color: #6b6b6b;
+    margin-block-end: 15px;
+}
+
+.invalid-location img{
+    width: 80%;
 }
