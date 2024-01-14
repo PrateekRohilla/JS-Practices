@@ -21,7 +21,24 @@ async function checkWeather(city){
 
     windSpeed.innerHTML = `${weatherData.wind.speed}Km/H`;
 
-    
+    switch(weatherData.weather[0].main){
+        case 'Clouds':
+            weatherImg.src = "/Weather app/assets/cloud.png";
+                break;
+        case 'Clear':
+            weatherImg.src = "/Weather app/assets/clear.png";
+                break;
+        case 'Rain':
+            weatherImg.src = "/Weather app/assets/rain.png";
+                break;
+        case 'Mist':
+            weatherImg.src = "/Weather app/assets/mist.png";
+                break;
+        case 'Snow':
+            weatherImg.src = "/Weather app/assets/snow.png";
+                break;
+        
+    }
 
     console.log(weatherData);
 }
