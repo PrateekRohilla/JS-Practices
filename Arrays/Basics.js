@@ -101,7 +101,7 @@ console.log(fruits.splice(2, 1));
 console.log(fruits.splice(2, 1, "papaya"));
 
 //remove 1 elem & add two - "guava", "litchi"
-console.log(fruits.splice(2, 1, "guava", litchi));
+console.log(fruits.splice(2, 1, "guava", "litchi"));
 
 //remove nothing add "guava" starting from 2nd index
 console.log(fruits.splice(2, 0, "guava", "pineapple"));
@@ -111,3 +111,9 @@ console.log(fruits.splice(arr.length, 0, "melon"));
 
 //add at begin
 console.log(fruits.splice(0, 0, "melon"));
+
+
+
+//Is given value an array or not -> use toString.call()
+console.log(toString.call(fruits));
+//o/p -> [object Array]
